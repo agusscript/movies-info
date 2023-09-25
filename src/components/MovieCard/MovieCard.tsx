@@ -1,12 +1,20 @@
+import { Link } from "react-router-dom";
+import { Movie } from "../../types/Movie";
 import "./MovieCard.scss";
 
-function MovieCard({ title, imageAddress }: { title: string; imageAddress: string }) {
-  const urlImage = "https://image.tmdb.org/t/p/w300/";
+function MovieCard({ data }: { data: Movie }) {
+  const urlImage = "https://image.tmdb.org/t/p/w500/";
 
   return (
     <article className="movie-card">
-      <img className="movie-card-poster" src={urlImage + imageAddress} alt={`${title} poster`} />
-      <h2 className="movie-card-title">{title}</h2>
+      <Link to={"/movies/" + data.id}>
+        <img
+          className="movie-card-poster"
+          src={urlImage + data.poster_path}
+          alt={`${data.title} poster`}
+        />
+      </Link>
+      <h2 className="movie-card-title">{data.title}</h2>
     </article>
   );
 }

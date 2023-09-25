@@ -4,15 +4,20 @@ import Footer from "./components/Footer/Footer";
 import { get } from "./utils/httpClient";
 import { useState, useEffect } from "react";
 import { Movie } from "./types/Movie";
+import Loader from "./components/Loader/Loader";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+
     const fetchData = async () => {
       const data = await get("/discover/movie");
-      // console.log(data);
       setMovies(data.results);
+      // console.log(data);
+      setLoading(false);
     };
 
     fetchData();
@@ -20,19 +25,15 @@ function App() {
 
   return (
     <div className="wrapper">
-
       <header>
         <h1>Movies Info</h1>
       </header>
 
       <main>
+        <Loader className={`${!loading && "hidden"}`} />
         <div className="movies-container">
           {movies.map((movie: Movie) => (
-            <MovieCard
-              key={movie.id}
-              title={movie.title}
-              imageAddress={movie.poster_path}
-            />
+            <MovieCard data={movie} key={movie.id} />
           ))}
         </div>
       </main>
