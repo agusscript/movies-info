@@ -1,0 +1,20 @@
+footer {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  letter-spacing: 0.05rem;
+  font-size: 1.2rem;
+
+  a {
+    &:hover {
+      svg {
+        g {
+          fill: #555555ab;
+          transition: all ease 0.4s;
+        }
+      }
+    }
+  }
+}

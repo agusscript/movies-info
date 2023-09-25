@@ -1,0 +1,11 @@
+.movie-card {
+  text-align: center;
+
+  &-poster {
+    width: 100%;
+    aspect-ratio: 9/14;
+    object-fit: cover;
+    border-radius: 0.2rem;
+    user-select: none;
+  }
+}
