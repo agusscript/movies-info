@@ -1,7 +1,7 @@
 import "./Loader.scss";
 
-function Loader({ className }: { className: string }) {
-  return <div className={`loader ${className}`}></div>;
+function Loader() {
+  return <div className="loader"></div>;
 }
 
 export default Loader;
