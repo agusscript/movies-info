@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Root from "./pages/MovieDetails.tsx";
+import Root from "./pages/MovieDetails/MovieDetails.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/movies/:id",
+    path: "/movies/:MovieId",
     element: <Root />,
   },
 ]);

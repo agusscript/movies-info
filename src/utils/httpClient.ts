@@ -2,7 +2,6 @@ const API: string = "https://api.themoviedb.org/3";
 
 export async function get(path: string) {
   const response = await fetch(API + path, {
-    method: "GET",
     headers: {
       accept: "application/json",
       Authorization:
