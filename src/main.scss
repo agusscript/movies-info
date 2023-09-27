@@ -1,4 +1,6 @@
 body {
+  margin: 0;
+  padding: 0;
   color: whitesmoke;
   background-color: #0d1117;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -6,10 +8,12 @@ body {
 
 main {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .wrapper {
   width: 90%;
-  max-width: 100rem;
+  max-width: 1400px;
   margin: auto;
 }

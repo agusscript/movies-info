@@ -8,6 +8,7 @@
 
   @media screen and (max-width: 1000px) {
     flex-wrap: wrap;
+    gap: 1rem;
   }
 }
 
@@ -34,7 +35,81 @@
     font-size: 2.5rem;
   }
 
+  &-tagline {
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-style: italic;
+    letter-spacing: 0.02rem;
+  }
+
+  &-overview {
+    letter-spacing: 0.02rem;
+    font-size: 1.02rem;
+    opacity: 0.6;
+  }
+}
+
+.rating-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &-value {
+    padding: 0.1rem 0.6rem 0.24rem 0.6rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: #404042;
+    border-radius: 0.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+
+    &-img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &-votes {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+}
+
+.date-container {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+
+  @media screen and (max-width: 425px) {
+    justify-content: start;
+  }
+
+  &-release-date {
+    background-color: #404042;
+    padding: 0.1rem 0.6rem 0.24rem 0.6rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 0.1rem;
+  }
+}
+
+.genres-container {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
   &-genre {
-    margin: 0 0.2rem;
+    background-color: #0B3954;
+    padding: 0.1rem 0.6rem 0.24rem 0.6rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    border-radius: 0.2rem;
+    letter-spacing: 0.04rem;
   }
 }
