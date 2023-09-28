@@ -10,6 +10,7 @@ import { get } from "../../utils/httpClient";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,12 +21,22 @@ function Home() {
     navigate("/?search=/" + search);
   }
 
+  function handleBackHomeClick() {
+    setSearch("");
+    navigate("/");
+  }
+
+  useEffect(() => {
+    document.title = "Movies Info | Home";
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
   function renderHome() {
     return (
       <>
         <header className="header">
           <Link to={"/"}>
-            <h1 className="header-title" onClick={() => setSearch("")}>
+            <h1 className="header-title" onClick={handleBackHomeClick}>
               Movies Info
             </h1>
           </Link>
@@ -46,15 +57,35 @@ function Home() {
             </button>
           </form>
 
-          {!loading ? (
-            <section className="movies-grid-section">
-              {movies.map((movie: Movie) => (
-                <MovieCard data={movie} key={movie.id} />
-              ))}
-            </section>
-          ) : (
-            <Loader />
-          )}
+          <section className="movies-grid-section">
+            {!loading ? (
+              <>
+                {movies.map((movie: Movie) => (
+                  <MovieCard key={movie.id} data={movie} />
+                ))}
+              </>
+            ) : (
+              <Loader />
+            )}
+          </section>
+
+          <section className="navigation">
+            <button
+              className="navigation-prev"
+              onClick={() => pageNumber != 1 && setPageNumber(pageNumber - 1)}
+            >
+              Prev
+            </button>
+            <div className="navigation-number-page">
+              <span className="navigation-number-text">{pageNumber}</span>
+            </div>
+            <button
+              className="navigation-next"
+              onClick={() => setPageNumber(pageNumber + 1)}
+            >
+              Next
+            </button>
+          </section>
         </main>
       </>
     );
@@ -66,14 +97,15 @@ function Home() {
     try {
       let response;
 
-      search.length === 0
-        ? (response = await get("/discover/movie"))
-        : (response = await get("/search/movie?query=" + search));
+      if (search.length === 0) {
+        response = await get("/discover/movie?&page=" + pageNumber);
+      } else {
+        response = await get("/search/movie?query=" + search);
+      }
 
       const listMovies = response.results;
       setMovies(listMovies);
       setLoading(false);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +113,8 @@ function Home() {
 
   useEffect(() => {
     fetchMovies();
-  }, [urlSearch]);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [urlSearch, pageNumber]);
 
   return renderHome();
 }

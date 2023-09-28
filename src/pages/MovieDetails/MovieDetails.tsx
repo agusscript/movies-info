@@ -11,11 +11,16 @@ function MovieDetails() {
   const { MovieId } = useParams();
   const [loading, setLoading] = useState(true);
   const [movieDetails, setMovieDetails] = useState({} as Movie);
+
+  useEffect(()=> {
+    document.title = "Movies Info | Details";
+  }, [])
+
   const urlImage = movieDetails.poster_path
     ? getImage(500, movieDetails.poster_path)
     : "https://raw.githubusercontent.com/agusscript/movies-info/main/assets/no-image-placeholder.jpg";
 
-  function showDetails() {
+  function renderDetails() {
     return (
       <div className="wrapper">
         <section className="movie-details-section">
@@ -78,7 +83,7 @@ function MovieDetails() {
   }, []);
 
   if (!loading) {
-    return showDetails();
+    return renderDetails();
   } else {
     return <Loader />;
   }

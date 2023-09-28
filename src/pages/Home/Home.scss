@@ -7,8 +7,8 @@
     line-height: 3.6rem;
     margin: 1rem;
     font-size: 3.6rem;
-    background: -webkit-linear-gradient(90deg, #00bce2 25%, #03036d 100%);
-    background: linear-gradient(90deg, #00bce2 25%, #03036d 100%);
+    background: -webkit-linear-gradient(90deg, #00bce2 1%, #0d0d91 100%);
+    background: linear-gradient(90deg, #00bce2 1%, #0d0d91 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -42,6 +42,7 @@
 
     &::placeholder {
       color: #a5a5a5;
+      user-select: none;
     }
   }
 
@@ -58,8 +59,50 @@
 }
 
 .movies-grid-section {
+  min-height: 100vh;
   margin: 3rem 0;
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &-number-page {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #14879e;
+    color: #0d1117;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 1.7rem;
+  }
+
+  button {
+    margin: 0 0.2rem;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    background-color: whitesmoke;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    letter-spacing: 0.1rem;
+    border-radius: 0.4rem;
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    &:active {
+      background-color: #4e5658;
+    }
+  }
 }

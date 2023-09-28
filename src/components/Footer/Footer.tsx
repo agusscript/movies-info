@@ -11,8 +11,8 @@ function Footer() {
         rel="noreferrer"
       >
         <svg
-          width="32px"
-          height="32px"
+          width="26px"
+          height="26px"
           viewBox="0 0 20 20"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
