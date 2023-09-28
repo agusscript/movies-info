@@ -3,15 +3,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Movie } from "../../types/Movie";
 import { get } from "../../utils/httpClient";
+import { AiFillStar } from "react-icons/ai";
 import getImage from "../../utils/getImage";
 import Loader from "../../components/Loader/Loader";
-import starImg from "../../../assets/star-icon.svg";
 
 function MovieDetails() {
   const { MovieId } = useParams();
   const [loading, setLoading] = useState(true);
   const [movieDetails, setMovieDetails] = useState({} as Movie);
-  const urlImage = getImage(500, movieDetails.poster_path);
+  const urlImage = movieDetails.poster_path
+    ? getImage(500, movieDetails.poster_path)
+    : "https://raw.githubusercontent.com/agusscript/movies-info/main/assets/no-image-placeholder.jpg";
 
   function showDetails() {
     return (
@@ -36,11 +38,7 @@ function MovieDetails() {
 
             <div className="rating-container">
               <span className="rating-container-value">
-                <img
-                  className="rating-container-value-img"
-                  src={starImg}
-                  alt="star icon"
-                />
+                <AiFillStar color="#F5B700" size={23}/>
                 {movieDetails.vote_average.toFixed(1)}
               </span>
               <p className="rating-container-votes">{movieDetails.vote_count} votes</p>
@@ -70,7 +68,6 @@ function MovieDetails() {
       const response = await get("/movie/" + MovieId);
       setMovieDetails(response);
       setLoading(false);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
