@@ -3,7 +3,7 @@ import "./Footer.scss";
 function Footer() {
   return (
     <footer>
-      <span>Coded by Agustin</span>
+      <span>Coded by Agustin Sanchez</span>
       <a
         href="https://github.com/agusscript"
         className="footer-link"

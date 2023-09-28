@@ -24,12 +24,8 @@ function Home() {
   function handleBackHomeClick() {
     setSearch("");
     navigate("/");
+    setPageNumber(1);
   }
-
-  useEffect(() => {
-    document.title = "Movies Info | Home";
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
 
   function renderHome() {
     return (
@@ -56,6 +52,10 @@ function Home() {
               <BiSearch size={27} color="whitesmoke" />
             </button>
           </form>
+
+          {movies.length === 0 && !loading && (
+            <p className="no-results">No movies found</p>
+          )}
 
           <section className="movies-grid-section">
             {!loading ? (
@@ -100,7 +100,7 @@ function Home() {
       if (search.length === 0) {
         response = await get("/discover/movie?&page=" + pageNumber);
       } else {
-        response = await get("/search/movie?query=" + search);
+        response = await get(`/search/movie?query=${search}&page=${pageNumber}`);
       }
 
       const listMovies = response.results;
@@ -112,8 +112,9 @@ function Home() {
   }
 
   useEffect(() => {
-    fetchMovies();
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    document.title = "Movies Info | Home";
+    fetchMovies();
   }, [urlSearch, pageNumber]);
 
   return renderHome();
