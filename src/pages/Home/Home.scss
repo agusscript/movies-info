@@ -64,14 +64,6 @@
   font-size: 2rem;
 }
 
-.movies-grid-section {
-  min-height: 100vh;
-  margin: 3rem 0;
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-}
-
 .navigation {
   display: flex;
   align-items: center;

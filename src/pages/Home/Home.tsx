@@ -1,11 +1,9 @@
 import "./Home.scss";
-import MovieCard from "../../components/MovieCard/MovieCard";
-import Loader from "../../components/Loader/Loader";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
-import { Movie } from "../../types/Movie";
 import { get } from "../../utils/httpClient";
+import MoviesGrid from "../../components/MoviesGrid/MoviesGrid";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -58,17 +56,7 @@ function Home() {
             <p className="no-results">No movies found</p>
           )}
 
-          <section className="movies-grid-section">
-            {!loading ? (
-              <>
-                {movies.map((movie: Movie) => (
-                  <MovieCard key={movie.id} data={movie} />
-                ))}
-              </>
-            ) : (
-              <Loader />
-            )}
-          </section>
+          <MoviesGrid loading={loading} movies={movies} />
 
           <section className="navigation">
             <button

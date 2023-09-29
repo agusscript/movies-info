@@ -1,24 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App.tsx";
-import Root from "./pages/MovieDetails/MovieDetails.tsx";
+import MovieDetails from "./pages/MovieDetails/MovieDetails.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/movies/:MovieId",
-    element: <Root />,
-  },
-]);
+const root = createRoot(document.getElementById("root")!);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+root.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/movies/:MovieId" element={<MovieDetails />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
+  </BrowserRouter>
 );
