@@ -16,18 +16,19 @@ function Home() {
   const location = useLocation();
   const urlSearch = location.search;
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
+    setPageNumber(1);
     navigate("/?search=/" + search);
   }
 
-  function handleBackHomeClick() {
+  function handleBackHomeClick(): void {
     setSearch("");
     navigate("/");
     setPageNumber(1);
   }
 
-  function renderHome() {
+  function renderHome(): JSX.Element {
     return (
       <>
         <header className="header">
@@ -81,7 +82,9 @@ function Home() {
             </div>
             <button
               className="navigation-next"
-              onClick={() => setPageNumber(pageNumber + 1)}
+              onClick={() =>
+                movies.length != 0 && !loading && setPageNumber(pageNumber + 1)
+              }
             >
               Next
             </button>
@@ -91,7 +94,7 @@ function Home() {
     );
   }
 
-  async function fetchMovies() {
+  async function fetchMovies(): Promise<void> {
     setLoading(true);
 
     try {
