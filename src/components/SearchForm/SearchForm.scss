@@ -1,0 +1,37 @@
+.search-form {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-input {
+    outline: none;
+    width: 100%;
+    max-width: 360px;
+    height: 44px;
+    padding: 0 0.5rem;
+    border: 3px solid #14879e;
+    border-right: none;
+    background: transparent;
+    color: whitesmoke;
+    font-size: 1rem;
+    border-radius: 0.2rem 0 0 0.2rem;
+    letter-spacing: 0.08rem;
+
+    &::placeholder {
+      color: #a5a5a5;
+      user-select: none;
+    }
+  }
+
+  &-btn {
+    height: 44px;
+    border: 1px solid #14879e;
+    background: #14879e;
+    border-radius: 0 0.2rem 0.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}

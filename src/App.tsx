@@ -1,13 +1,17 @@
 import "./main.scss";
+import { PageNumberProvider } from "./context/pageNumber";
+import { SearchProvider } from "./context/search";
 import Home from "./pages/Home/Home";
-import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div className="wrapper">
-      <Home />
-      <Footer />
-    </div>
+    <PageNumberProvider>
+      <SearchProvider>
+        <div className="wrapper">
+          <Home />
+        </div>
+      </SearchProvider>
+    </PageNumberProvider>
   );
 }
 

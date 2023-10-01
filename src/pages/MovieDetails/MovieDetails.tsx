@@ -12,10 +12,6 @@ function MovieDetails() {
   const [loading, setLoading] = useState(true);
   const [movieDetails, setMovieDetails] = useState({} as Movie);
 
-  useEffect(()=> {
-    document.title = "Movies Info | Details";
-  }, [])
-
   const urlImage = movieDetails.poster_path
     ? getImage(500, movieDetails.poster_path)
     : "https://raw.githubusercontent.com/agusscript/movies-info/main/assets/no-image-placeholder.jpg";
@@ -79,6 +75,8 @@ function MovieDetails() {
   }
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    document.title = "Movies Info | Details";
     fetchMovieDetails();
   }, []);
 

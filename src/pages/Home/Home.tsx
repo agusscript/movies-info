@@ -1,56 +1,31 @@
 import "./Home.scss";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { BiSearch } from "react-icons/bi";
+import { useState, useEffect, useContext } from "react";
+import { PageNumberContext } from "../../context/pageNumber";
+import { SearchContext } from "../../context/search";
+import { useLocation } from "react-router-dom";
 import { get } from "../../utils/httpClient";
+import Header from "../../components/Header/Header";
+import SearchForm from "../../components/SearchForm/SearchForm";
 import MoviesGrid from "../../components/MoviesGrid/MoviesGrid";
+import Footer from "../../components/Footer/Footer";
+import Navigation from "../../components/Navigation/Navigation";
 
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [search, setSearch] = useState("");
-  const navigate = useNavigate();
+  const { pageNumber } = useContext(PageNumberContext);
+  const { search } = useContext(SearchContext);
+
   const location = useLocation();
   const urlSearch = location.search;
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
-    event.preventDefault();
-    setPageNumber(1);
-    navigate("/?search=/" + search);
-  }
-
-  function handleBackHomeClick(): void {
-    setSearch("");
-    navigate("/");
-    setPageNumber(1);
-  }
 
   function renderHome(): JSX.Element {
     return (
       <>
-        <header className="header">
-          <Link to={"/"}>
-            <h1 className="header-title" onClick={handleBackHomeClick}>
-              Movies Info
-            </h1>
-          </Link>
-        </header>
+        <Header />
 
         <main>
-          <form action="" className="search-form" onSubmit={handleSubmit}>
-            <input
-              className="search-form-input"
-              type="search"
-              name="search"
-              placeholder="Search your movie..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button className="search-form-btn" type="submit">
-              <BiSearch size={27} color="whitesmoke" />
-            </button>
-          </form>
+          <SearchForm />
 
           {movies.length === 0 && !loading && (
             <p className="no-results">No movies found</p>
@@ -58,26 +33,10 @@ function Home() {
 
           <MoviesGrid loading={loading} movies={movies} />
 
-          <section className="navigation">
-            <button
-              className="navigation-prev"
-              onClick={() => pageNumber != 1 && setPageNumber(pageNumber - 1)}
-            >
-              Prev
-            </button>
-            <div className="navigation-number-page">
-              <span className="navigation-number-text">{pageNumber}</span>
-            </div>
-            <button
-              className="navigation-next"
-              onClick={() =>
-                movies.length != 0 && !loading && setPageNumber(pageNumber + 1)
-              }
-            >
-              Next
-            </button>
-          </section>
+          <Navigation movies={movies} loading={loading} />
         </main>
+
+        <Footer />
       </>
     );
   }
