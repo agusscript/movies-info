@@ -1,0 +1,36 @@
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-title {
+    margin: 0;
+    font-size: 3rem;
+  }
+
+  &-text {
+    margin: 1rem 0;
+    font-size: 2rem;
+  }
+
+  &-button {
+    margin: 1rem 0;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: whitesmoke;
+    background-color: #14879e;
+    border-radius: 0.2rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #14879eb4;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}

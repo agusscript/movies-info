@@ -1,10 +1,10 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { PageNumberProvider } from "./context/pageNumber.tsx";
 import App from "./App.tsx";
 import MovieDetails from "./pages/MovieDetails/MovieDetails.tsx";
-import ErrorPage from "./pages/ErrorPage.tsx";
+import ErrorPage from "./pages/ErrorPage/ErrorPage.tsx";
 import SearchPage from "./pages/SearchPage.tsx";
-import { PageNumberProvider } from "./context/pageNumber.tsx";
 
 const root = createRoot(document.getElementById("root")!);
 
