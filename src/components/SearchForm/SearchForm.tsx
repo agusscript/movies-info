@@ -7,13 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 function SearchForm() {
   const { search, setSearch } = useContext(SearchContext);
-  const {setPageNumber} = useContext(PageNumberContext);
+  const { setPageNumber } = useContext(PageNumberContext);
   const navigate = useNavigate();
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     setPageNumber(1);
-    navigate("/?search=/" + search);
+    navigate("/search/" + search);
   }
 
   return (

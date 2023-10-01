@@ -1,28 +1,24 @@
-import "./Home.scss";
 import { useState, useEffect, useContext } from "react";
-import { PageNumberContext } from "../../context/pageNumber";
 import { useParams } from "react-router-dom";
-import { get } from "../../utils/httpClient";
-import Header from "../../components/Header/Header";
-import SearchForm from "../../components/SearchForm/SearchForm";
-import MoviesGrid from "../../components/MoviesGrid/MoviesGrid";
-import Footer from "../../components/Footer/Footer";
-import Navigation from "../../components/Navigation/Navigation";
+import { PageNumberContext } from "../context/pageNumber";
+import { get } from "../utils/httpClient";
+import Header from "../components/Header/Header";
+import MoviesGrid from "../components/MoviesGrid/MoviesGrid";
+import Navigation from "../components/Navigation/Navigation";
+import Footer from "../components/Footer/Footer";
 
-function Home() {
+function SearchPage() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const { pageNumber } = useContext(PageNumberContext);
   const { SearchText } = useParams();
 
-  function renderHome(): JSX.Element {
+  function renderSearchPage(): JSX.Element {
     return (
       <>
         <Header />
 
         <main>
-          <SearchForm />
-
           {movies.length === 0 && !loading && (
             <p className="no-results">No movies found</p>
           )}
@@ -41,7 +37,7 @@ function Home() {
     setLoading(true);
 
     try {
-      let response = await get("/discover/movie?&page=" + pageNumber);
+      let response = await get(`/search/movie?query=${SearchText}&page=${pageNumber}`);
 
       const listMovies = response.results;
       setMovies(listMovies);
@@ -53,11 +49,11 @@ function Home() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    document.title = "Movies Info | Home";
+    document.title = "Movies Info | Search";
     fetchMovies();
   }, [SearchText, pageNumber]);
 
-  return renderHome();
+  return renderSearchPage();
 }
 
-export default Home;
+export default SearchPage;
