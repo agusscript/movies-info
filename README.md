@@ -1,27 +1,80 @@
-# React + TypeScript + Vite
+# Movies Info
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movies App is a web application built with React and TypeScript. The app consumes data from an external API to show information about movies.
 
-Currently, two official plugins are available:
+Here are some of the features of the app:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Uses React and TypeScript to build a modern and responsive UI
+- Consumes data from an external API to show movie information
+- Has a search bar to find movies by title
+- Allows users to view movie details, including title, poster image, release date, rating, and synopsis
+- Routes management with react-router-dom library
 
-## Expanding the ESLint configuration
+## Desktop view
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Home
 
-- Configure the top-level `parserOptions` property like this:
+![](assets/screenshots/movies-info-home.jpg)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+- Search
+
+![](assets/screenshots/movies-info-search.jpg)
+
+- Details
+
+![](assets/screenshots/movies-info-details.jpg)
+
+## Mobile view
+
+![](assets/screenshots/movies-info-home-mob.jpg)
+
+![](assets/screenshots/movies-info-details-mob.jpg)
+
+## Link
+
+- [Live site](https://movies-info-six.vercel.app/)
+
+## Built with
+
+<p>
+ <a href="https://www.typescriptlang.org/">
+  <img src="https://img.shields.io/badge/-TypeScript-007acc?style=flat-square&logo=TypeScript&logoColor=white" height="30" alt="TypeScript"/>
+ </a>
+  <a href="https://sass-lang.com/">
+  <img src="https://img.shields.io/badge/-Sass-ff69b4?style=flat-square&logo=SASS&logoColor=white" height="30" alt="Sass"/>
+ </a>
+  <a href="https://react.dev/blog/2023/03/16/introducing-react-dev">
+  <img src="https://img.shields.io/badge/-React-17A1E6?style=flat-square&logo=react&logoColor=white" height="30" alt="React"/>
+ </a>
+  <a href="https://vitejs.dev/">
+  <img src="https://img.shields.io/badge/-ViteJS-purple?style=flat-square&logo=Vite&logoColor=white" height="30" alt="ViteJs"/>
+ </a>
+</p>
+
+## Run the project locally
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/agusscript/movies-info.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Go to the project directory
+
+```bash
+  cd movies-info
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the local server
+
+```bash
+  npm run dev
+```
