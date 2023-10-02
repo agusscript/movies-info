@@ -26,7 +26,11 @@ Here are some of the features of the app:
 
 ## Mobile view
 
+- Home
+
 ![](assets/screenshots/movies-info-home-mob.jpg)
+
+- Details
 
 ![](assets/screenshots/movies-info-details-mob.jpg)
 
@@ -52,8 +56,6 @@ Here are some of the features of the app:
 </p>
 
 ## Run the project locally
-
-## Run Locally
 
 Clone the project
 
